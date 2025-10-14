@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Styles */
+:root {
+  --primary-color: #002d6d;
+  --secondary-color: #0a8fc4;
+  --accent-color: #33e02d;   
+  --light-text: #f2f2e6;     
+  --dark-text: #002d6d;     
+  --light-bg: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: 'TildaSans', Arial, sans-serif;
+  background-color: var(--light-bg);
+  color: var(--dark-text);
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+section {
+  padding: 60px 0;
+}

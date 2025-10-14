@@ -1,0 +1,89 @@
+.courses-section {
+  background-color: var(--primary-color);
+  color: var(--light-text);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: var(--light-text);
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.course-card {
+  background-color: #f2f2e6;
+  color: var(--dark-text);
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-content h3 {
+  color: var(--secondary-color);
+  margin-top: 0;
+}
+
+.card-content .description {
+  flex-grow: 1;
+}
+
+.card-content .age {
+  font-weight: bold;
+}
+
+.card-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn-detail, .btn-try {
+  padding: 8px 15px;
+  border-radius: 20px;
+  text-decoration: none;
+  text-align: center;
+  flex: 1;
+  transition: all 0.3s ease;
+}
+
+.btn-detail {
+  background-color: var(--primary-color);
+  color: var(--light-text);
+}
+
+.btn-try {
+  background-color: transparent;
+  color: var(--dark-text);
+  border: 1px solid var(--dark-text);
+}
+
+.btn-detail:hover {
+  background-color: var(--accent-color);
+  color: var(--light-text);
+}
+
+.btn-try:hover {
+  background-color: var(--dark-text);
+  color: var(--light-text);
+}

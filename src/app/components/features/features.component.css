@@ -1,0 +1,54 @@
+/* src/app/components/features/features.component.css */
+.features-section {
+  background-color: var(--light-bg);
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 60px;
+}
+
+.features-grid {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+}
+
+.feature-card {
+  flex: 1;
+  max-width: 350px;
+}
+
+.card-image {
+  width: 150px; /* Розмір заглушки */
+  height: 150px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background-color: #e0e0e0; /* Колір заглушки */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+  color: #999;
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.feature-card p {
+  font-size: 1.1rem;
+  color: var(--dark-text);
+  line-height: 1.6;
+}

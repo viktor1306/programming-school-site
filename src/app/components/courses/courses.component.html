@@ -1,0 +1,21 @@
+<section id="courses" class="courses-section">
+  <div class="container">
+    <h2 class="section-title">Курси, які пропонуємо</h2>
+    <div class="courses-grid">
+      <div class="course-card" *ngFor="let course of courses">
+        <div class="card-image">
+          <img [src]="course.imageUrl" [alt]="course.title">
+        </div>
+        <div class="card-content">
+          <h3>{{ course.title }}</h3>
+          <p class="description">{{ course.description }}</p>
+          <p class="age">Для дітей {{ course.age }}</p>
+          <div class="card-buttons">
+            <a href="#" class="btn-detail">Детальніше</a>
+            <a href="#contact" class="btn-try">Спробувати</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

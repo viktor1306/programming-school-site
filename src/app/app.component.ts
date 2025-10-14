@@ -1,12 +1,34 @@
+// src/app/app.component.ts
+
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+
+// 1. Імпортуємо всі твої компоненти
+import { HeaderComponent } from './components/header/header.component';
+import { HeroComponent } from './components/hero/hero.component';
+import { FeaturesComponent } from './components/features/features.component';
+import { CoursesComponent } from './components/courses/courses.component';
+import { WhyUsComponent } from './components/why-us/why-us.component';
+import { ReviewsComponent } from './components/reviews/reviews.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  // 2. Додаємо їх в масив imports, щоб AppComponent "знав" про них
+  imports: [
+    HeaderComponent,
+    HeroComponent,
+    FeaturesComponent,
+    CoursesComponent,
+    WhyUsComponent,
+    ReviewsComponent,
+    ContactFormComponent,
+    FooterComponent
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'programming-school-site';
+  // title можна видалити, він більше не потрібен
 }
