@@ -1,0 +1,37 @@
+<div class="form-page-container">
+  <div class="trial-form">
+    <h2>Безкоштовне пробне заняття</h2>
+    <p>Заповніть форму, і наш менеджер зв'яжеться з вами найближчим часом.</p>
+
+    <div class="form-group">
+      <label for="name">Ім'я дитини</label>
+      <input #nameInput type="text" id="name" placeholder="Введіть ім'я" required>
+    </div>
+
+    <div class="form-group">
+      <label for="course">Який курс цікавить?</label>
+      <div class="custom-select-wrapper" #selectWrapper (click)="toggleDropdown()">
+        <div class="custom-select-trigger" [class.selected]="selectedCourse !== 'Оберіть курс зі списку'">
+          <span>{{ selectedCourse }}</span>
+          <div class="arrow"></div>
+        </div>
+        <div class="custom-options" [class.open]="isOpen">
+          <div class="custom-option" *ngFor="let course of courses" (click)="selectCourse(course)">
+            {{ course }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Номер телефону</label>
+      <input #phoneInput type="tel" id="phone" placeholder="Введіть ваш номер" required>
+    </div>
+
+    <button type="button" class="submit-btn" [disabled]="isSubmitting" (click)="onSubmit()">
+      {{ isSubmitting ? 'Відправка...' : 'Отримати заняття' }}
+    </button>
+
+    <p class="submit-message" *ngIf="submitMessage">{{ submitMessage }}</p>
+  </div>
+</div>

@@ -1,0 +1,146 @@
+.form-page-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--primary-color);
+  padding: 40px 20px;
+}
+
+.trial-form {
+  max-width: 500px;
+  width: 100%;
+  padding: 40px;
+  background-color: var(--light-bg);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.trial-form h2 {
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.trial-form p {
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--dark-text);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* --- ↓↓↓ НОВИЙ ДИЗАЙН ДЛЯ SELECT ↓↓↓ --- */
+
+.custom-select-wrapper {
+  position: relative;
+  cursor: pointer;
+  user-select: none; /* Забороняємо виділення тексту */
+}
+
+.custom-select-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  color: #333;
+  transition: border-radius 0.2s ease-out; /* Анімація для кутів */
+}
+
+/* Коли список відкритий, нижні кути стають гострими */
+.custom-select-wrapper.open .custom-select-trigger {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.custom-select-trigger .arrow {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid var(--primary-color);
+  transition: transform 0.3s ease;
+}
+
+/* Розвертаємо стрілку, коли список відкритий */
+.custom-select-wrapper.open .arrow {
+  transform: rotate(180deg);
+}
+
+.custom-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #ffffff; /* Світлий фон */
+  border-radius: 0 0 10px 10px;
+  border: 1px solid #ccc;
+  border-top: none;
+  max-height: 0;
+  opacity: 0; /* Робимо його прозорим */
+  visibility: hidden; /* Ховаємо повністю */
+  overflow-y: auto;
+  transition: all 0.3s ease-out;
+  z-index: 10;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1); /* Додаємо тінь */
+}
+
+.custom-options.open {
+  max-height: 250px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.custom-option {
+  padding: 12px 15px;
+  color: var(--dark-text); /* Темний текст */
+  transition: background-color 0.2s ease;
+}
+
+.custom-option:hover {
+  background-color: #f0f0f0; /* Світло-сірий при наведенні */
+}
+
+/* --- ↑↑↑ КІНЕЦЬ НОВИХ СТИЛІВ --- */
+
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--light-text);
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background-color: #2aa825;
+}

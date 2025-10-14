@@ -87,3 +87,13 @@
   background-color: var(--dark-text);
   color: var(--light-text);
 }
+
+@media (max-width: 768px) {
+  .courses-grid {
+    grid-template-columns: 1fr; /* Одна колонка */
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+}
