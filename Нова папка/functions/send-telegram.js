@@ -17,7 +17,7 @@ exports.handler = async (event) => {
     `--------------------------------------`
   ].join('\n');
 
-  const url = `https://api.telegram.org/bot${8339018446:AAGtN9Eu2jTY3UFf7-GGiunD-n7LEc2c2tI}/sendMessage`;
+  const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
 
   try {
     await fetch(url, {
