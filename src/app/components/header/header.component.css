@@ -51,3 +51,37 @@
   background-color: var(--accent-color);
   color: var(--light-text);
 }
+
+/* Styles for hamburger menu button */
+.menu-toggle {
+  display: none; /* Сховано на десктопі */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+.menu-toggle span {
+  width: 30px;
+  height: 3px;
+  background: var(--light-text);
+  border-radius: 10px;
+  transition: all 0.3s linear;
+  position: relative;
+  transform-origin: 1px;
+}
+
+/* Mobile styles */
+@media (max-width: 992px) { /* Планшети і мобільні */
+  .main-nav, .header-actions {
+    display: none; /* Ховаємо меню і кнопку */
+  }
+  .menu-toggle {
+    display: flex; /* Показуємо бургер */
+  }
+}

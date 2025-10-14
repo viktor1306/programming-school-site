@@ -52,3 +52,18 @@
   color: var(--dark-text);
   line-height: 1.6;
 }
+
+@media (max-width: 768px) {
+  .features-grid {
+    flex-direction: column; /* Складаємо в стовпчик */
+    align-items: center;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    margin-bottom: 40px;
+  }
+}

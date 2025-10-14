@@ -67,3 +67,19 @@
   color: #999;
   border-radius: 20px;
 }
+
+@media (max-width: 768px) {
+  .why-us-container {
+    flex-direction: column; /* Складаємо в стовпчик */
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+  }
+
+  .image-container {
+    margin-top: 40px;
+    width: 100%;
+    height: 250px;
+  }
+}

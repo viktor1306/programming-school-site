@@ -29,3 +29,14 @@ body {
 section {
   padding: 60px 0;
 }
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+  section {
+    padding: 40px 0;
+  }
+
+  .container {
+    padding: 0 15px;
+  }
+}

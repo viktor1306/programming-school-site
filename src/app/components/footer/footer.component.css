@@ -28,3 +28,11 @@
 .footer-col a:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column; /* Складаємо в стовпчик */
+    gap: 25px;
+    text-align: center;
+  }
+}

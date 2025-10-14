@@ -73,3 +73,26 @@ input::placeholder, select {
   color: #999;
   border-radius: 20px;
 }
+
+@media (max-width: 992px) {
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .image-wrapper {
+    margin-top: 40px;
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column; /* Поля вводу стануть одне під одним */
+  }
+
+  .form-title {
+    font-size: 2rem;
+    text-align: center;
+  }
+}
