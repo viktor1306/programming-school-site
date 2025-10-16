@@ -16,9 +16,10 @@
           <div class="arrow"></div>
         </div>
         <div class="custom-options" [class.open]="isOpen">
-          <div class="custom-option" *ngFor="let course of courses" (click)="selectCourse(course)">
+          <div class="custom-option" *ngFor="let course of courses" (click)="selectCourse(course, $event)">
             {{ course }}
           </div>
+
         </div>
       </div>
     </div>

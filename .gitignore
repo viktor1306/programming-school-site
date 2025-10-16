@@ -40,3 +40,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Не пушимо токен у GitHub
+/src/assets/config.json

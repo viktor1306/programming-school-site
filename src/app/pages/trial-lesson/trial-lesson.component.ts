@@ -1,27 +1,48 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-trial-lesson',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule],
   templateUrl: './trial-lesson.component.html',
   styleUrls: ['./trial-lesson.component.css']
 })
-export class TrialLessonComponent {
+export class TrialLessonComponent implements OnInit {
   @ViewChild('selectWrapper') selectWrapper!: ElementRef;
   @ViewChild('nameInput') nameInput!: ElementRef<HTMLInputElement>;
   @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;
 
   isOpen = false;
-  selectedCourse: string = 'Оберіть курс зі списку';
-  courses = ["Консультація", "Scratch", "Python", "Web", "Digital ART", "Java", "Blender 3D", "Штучний інтелект", "КГ Junior", "КГ PRO", "Математика"];
+  selectedCourse = 'Оберіть курс зі списку';
+  courses = [
+    "Консультація", "Scratch", "Python", "Web", "Digital ART",
+    "Java", "Blender 3D", "Штучний інтелект", "КГ Junior",
+    "КГ PRO", "Математика"
+  ];
 
   isSubmitting = false;
   submitMessage = '';
 
+  private botToken = '';
+  private chatId = '';
+  private telegramApiUrl = '';
+
   constructor(private http: HttpClient) {}
+
+  ngOnInit() {
+    this.http.get<any>('assets/config.json').subscribe({
+      next: (config) => {
+        this.botToken = config.telegramBotToken;
+        this.chatId = config.telegramChatId;
+        this.telegramApiUrl = `https://api.telegram.org/bot${this.botToken}/sendMessage`;
+      },
+      error: () => {
+        console.error('⚠️ Не вдалося завантажити config.json');
+      }
+    });
+  }
 
   @HostListener('document:click', ['$event'])
   clickout(event: Event) {
@@ -31,38 +52,59 @@ export class TrialLessonComponent {
   }
 
   toggleDropdown() { this.isOpen = !this.isOpen; }
-  selectCourse(course: string) {
+
+  selectCourse(course: string, event: MouseEvent) {
+    event.stopPropagation();
     this.selectedCourse = course;
     this.isOpen = false;
   }
 
   onSubmit() {
-    const name = this.nameInput.nativeElement.value;
-    const phone = this.phoneInput.nativeElement.value;
+    const name = this.nameInput.nativeElement.value.trim();
+    const phone = this.phoneInput.nativeElement.value.trim();
     const course = this.selectedCourse;
 
     if (!name || !phone || course === 'Оберіть курс зі списку') {
-      alert('Будь ласка, заповніть всі поля!');
+      this.submitMessage = 'Будь ласка, заповніть всі поля!';
+      setTimeout(() => this.submitMessage = '', 3000);
+      return;
+    }
+
+    if (!this.botToken || !this.chatId) {
+      this.submitMessage = '⚠️ Немає доступу до Telegram API (config.json не знайдено).';
+      setTimeout(() => this.submitMessage = '', 4000);
       return;
     }
 
     this.isSubmitting = true;
-    this.submitMessage = '';
+    this.submitMessage = 'Відправка...';
 
-    // Це спеціальний шлях до нашої функції на Netlify
-    const functionUrl = '/.netlify/functions/send-telegram';
+    const message = `
+📩 *Нова заявка з сайту:*
 
-    this.http.post(functionUrl, { name, phone, course }).subscribe({
+👤 Ім'я: ${name}
+📞 Телефон: ${phone}
+📘 Курс: ${course}
+    `;
+
+    this.http.post(this.telegramApiUrl, {
+      chat_id: this.chatId,
+      text: message,
+      parse_mode: 'Markdown'
+    }).subscribe({
       next: () => {
-        this.submitMessage = 'Дякуємо! Ваша заявка відправлена.';
+        this.submitMessage = '✅ Дякуємо! Ваша заявка отримана.';
+        this.isSubmitting = false;
         this.nameInput.nativeElement.value = '';
         this.phoneInput.nativeElement.value = '';
         this.selectedCourse = 'Оберіть курс зі списку';
-        this.isSubmitting = false;
+        setTimeout(() => this.submitMessage = '', 5000);
       },
-      error: () => {
-        this.submitMessage = 'Сталася помилка. Спробуйте ще раз.';
+      error: (err) => {
+        console.error('Помилка при відправці:', err);
+        this.submitMessage = '❌ Помилка при відправці. Спробуйте ще раз.';
         this.isSubmitting = false;
+        setTimeout(() => this.submitMessage = '', 5000);
       }
     });
   }
